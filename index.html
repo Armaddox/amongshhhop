@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Among Shhhop</title>
+    <link rel="icon" type="image/x-icon" href="Img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<style>
+body {
+    background-image: url(Img/space.jpg);
+    background-repeat: repeat-y;
+    background-size: auto;
+    color: white;
+    font-family: 'Press Start 2P';
+    text-align: center;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #6A7B76;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar img {
+    height: 30px;
+    width: auto;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 10px;
+    right: 0;
+    top: 20px;
+    width: 200px;
+    z-index: 10;
+}
+
+.cart-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.contenido {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.productos {
+    background-color: #6A7B76;
+    width: 150px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.productos-imgbox {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.productos-img {
+    width: 100px;
+    height: 130px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.productos-img:hover {
+    transform: scale(1.6);
+    box-shadow: 1px black;
+}
+
+.infobox {
+    background-color: #6A7B76;
+    padding: 10px;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.colores {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.color-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.color-box:hover {
+    transform: scale(1.10);
+    box-shadow: 1px white;
+}
+
+section {
+    background-color: #6A7B76;
+    padding: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+section img {
+    width: 100%;
+    height: auto;
+    margin-top: 0.5cm;
+    margin-bottom: 0.5cm;
+    object-fit: cover;
+}
+
+.amongusimg {
+    text-align: left;
+}
+
+.contacto {
+    text-align: right;
+}
+
+footer {
+    width: 100%;
+    background-color: #6A7B76;
+    padding: 10px;
+    text-align: center;
+}
+
+</style>
+<body>
+<nav class="navbar">
+<a href="#inicio"><img src="Img/logo.png" width="75px" height="75px" alt="Among Shhhop"></a>
+<ul>
+<li><a href="#Inicio">Inicio</a></li>
+<li><a href="#Ropa">Ropa</a></li>
+<li><a href="#Peluches">Peluches</a></li>
+<li><a href="#Llaveros">Llaveros</a></li>
+<li><a href="#Contacto">Contacto</a></li>
+<li id="cart-menu">
+<a><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-cart4" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+  </svg>
+ Carrito (<span id="cart-count">0</span>)</a>
+<div class="cart-dropdown" id="cart-dropdown">
+<h3>Carrito de Compras</h3>
+<ul id="cart-items"></ul>
+</div>
+</li>
+</ul>
+</nav>
+
+<article id="Inicio">
+ <img src="Img/amongshhhop.png" alt="">
+</article>
+
+<section>
+<p>En esta tienda los fanaticos del juego pueden encontrar una variedad de articulos inspirados en los tripulantes y en el impostor. Consulta nuestros precios y ubicacion aqui.</p>
+</section>
+
+<article id="Ropa">
+<br>
+<br>
+<h1>SUDADERAS PARA ELLA</h1>
+
+<div class="contenido">
+<div class="productos">
+<div class="productos-imgbox">
+<img src="Img/hoodierojamujer.jpg" alt="Sudadera Roja" class="productos-img">
+</div>
+<div class="infobox">Sudadera Roja<br>$60.00</div>
+<button onclick="addToCart('Sudadera Roja')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+</div>
+</div>
+
+
+<div class="productos">
+<img src="Img/hoodieamarillamujer.jpg" alt="Sudadera Amarilla" class="productos-img">
+<div class="infobox">Sudadera Amarilla<br>$60.00</div>
+<button onclick="addToCart('Sudadera Amarilla')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodieverdemujer.jpg" alt="Sudadera Verde" class="productos-img">
+<div class="infobox">Sudadera Verde<br>$60.00</div>
+<button onclick="addToCart('Sudadera Verde')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodieazulmujer.jpg" alt="Sudadera Azul" class="productos-img">
+<div class="info">Sudadera Azul<br>$60.00</div>
+<button onclick="addToCart('Sudadera Azul')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodienegramujer.jpg" alt="Sudadera Negra" class="productos-img">
+<div class="info">Sudadera Negra<br>$60.00</div>
+<button onclick="addToCart('Sudadera Negra')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodierosamujer.jpg" alt="Sudadera Rosa" class="productos-img">
+<div class="info">Sudadera Rosa<br>$60.00</div>
+<button onclick="addToCart('Sudadera Rosa')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+</div>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+    
+<h1>SUDADERAS PARA EL</h1>
+
+<div class="contenido">
+<div class="productos">
+<div class="productos-imgbox">
+<img src="Img/hoodieroja.jpg" alt="Sudadera Roja" class="productos-img">
+</div>
+<div class="infobox">Sudadera Roja<br>$60.00</div>
+<button onclick="addToCart('Sudadera Roja')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodieamarilla.jpg" alt="Sudadera Amarilla" class="productos-img">
+<div class="infobox">Sudadera Amarilla<br>$60.00</div>
+<button onclick="addToCart('Sudadera Amarilla')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodieverde.jpg" alt="Sudadera Verde" class="productos-img">
+<div class="infobox">Sudadera Verde<br>$60.00</div>
+<button onclick="addToCart('Sudadera Verde')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodieazul.jpg" alt="Sudadera Azul" class="productos-img">
+<div class="info">Sudadera Azul<br>$60.00</div>
+<button onclick="addToCart('Sudadera Azul')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodienegra.jpg" alt="Sudadera Negra" class="productos-img">
+<div class="info">Sudadera Negra<br>$60.00</div>
+<button onclick="addToCart('Sudadera Negra')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: black;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/hoodierosa.jpg" alt="Sudadera Rosa" class="productos-img">
+<div class="info">Sudadera Rosa<br>$60.00</div>
+<button onclick="addToCart('Sudadera Rosa')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: black;"></div>
+</div>
+</div>
+</div>
+</article>
+
+<br>
+<br>
+<br>
+
+<article id="Peluches">
+<br>
+<br>
+<h1>PELUCHES</h1>
+
+<div class="contenido">
+<div class="productos">
+<div class="productos-imgbox">
+<img src="Img/pelucherojo.jpg" alt="Peluche Rojo" class="productos-img">
+</div>
+<div class="infobox">Peluche Rojo<br>$25.00</div>
+<button onclick="addToCart('Peluche')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: purple;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/pelucheamarillo.jpg" alt="Peluche Amarillo" class="productos-img">
+<div class="infobox">Peluche Amarillo<br>$25.00</div>
+<button onclick="addToCart('Peluche')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: purple;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/pelucheverde.jpg" alt="Peluche Verde" class="productos-img">
+<div class="infobox">Peluche Verde<br>$25.00</div>
+<button onclick="addToCart('Peluche')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: purple;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/pelucheazul.jpg" alt="Peluche Azul" class="productos-img">
+<div class="info">Peluche Azul<br>$25.00</div>
+<button onclick="addToCart('Peluche')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: purple;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/peluchemorado.jpg" alt="Peluche Morado" class="productos-img">
+<div class="info">Peluche Morado<br>$25.00</div>
+<button onclick="addToCart('Peluche')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: purple;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/pelucherosa.jpg" alt="Peluche Rosa" class="productos-img">
+<div class="info">Peluche Rosa<br>$25.00</div>
+<button onclick="addToCart('Peluche')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: purple;"></div>
+</div>
+</div>
+</div>
+</article>
+
+<br>
+<br>
+<br>
+
+<article id="Llaveros">
+<br>
+<br>
+<h1>LLAVEROS</h1>
+
+<div class="contenido">
+<div class="productos">
+<div class="productos-imgbox">
+<img src="Img/llaverorojo.jpg" alt="Llavero Rojo" class="productos-img">
+</div>
+<div class="infobox">Llavero Rojo<br>$10.00</div>
+<button onclick="addToCart('Llavero')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: brown;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/llaveroamarillo.jpg" alt="Llavero Amarillo" class="productos-img">
+<div class="infobox">Llavero Amarillo<br>$10.00</div>
+<button onclick="addToCart('Llavero')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: brown;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/llaveroverde.jpg" alt="Llavero Verde" class="productos-img">
+<div class="infobox">Llavero Verde<br>$10.00</div>
+<button onclick="addToCart('Llavero')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: brown;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/llaveroazul.jpg" alt="Llavero Azul" class="productos-img">
+<div class="info">Llavero Azul<br>$10.00</div>
+<button onclick="addToCart('Llavero')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: brown;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+</div>
+</div>
+
+<div class="productos">
+<img src="Img/llaverocafe.jpg" alt="Llavero Cafe" class="productos-img">
+<div class="info">Llavero Cafe<br>$10.00</div>
+<button onclick="addToCart('Llavero')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: brown;"></div>
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+</div>
+</div>
+        
+<div class="productos">
+<img src="Img/llaverorosa.jpg" alt="Llavero Rosa" class="productos-img">
+<div class="info">Llavero Rosa<br>$10.00</div>
+<button onclick="addToCart('Llavero')">Agregar al carrito</button>
+<div class="colores">
+<div class="color-box" style="background-color: pink;"></div>
+<div class="color-box" style="background-color: red;"></div>
+<div class="color-box" style="background-color: yellow;"></div>
+<div class="color-box" style="background-color: green;"></div>
+<div class="color-box" style="background-color: blue;"></div>
+<div class="color-box" style="background-color: brown;"></div>
+</div>
+</div>
+</div>
+</article>
+
+<br>
+<br>
+<br>
+
+<section>
+<img src="Img/among.jpg" alt="">
+</section>
+
+<br>
+
+<div class="amongusimg">
+<img src="Img/amongshhhop.png" alt="">
+</div>
+
+<br>
+
+<article id="Contacto">
+<h1>CONTACTO</h1>
+<div class="contacto">
+<h3>Redes</h3>
+<a href="https://www.facebook.com/?locale=es_LA"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-facebook" viewBox="0 0 16 16">
+<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg></a>
+
+<a href="https://www.instagram.com"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-instagram" viewBox="0 0 16 16">
+<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg></a>
+
+<a href="https://x.com/?lang=es"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-twitter-x" viewBox="0 0 16 16">
+<path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+</svg></a>
+
+<br>
+<br>
+
+<h3>Ubicacion</h3>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.0424201584588!2d-106.43573272437958!3d31.742043074113187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ea4359ba3469d5%3A0x5fdab3bc5a4f953c!2sUACJ%20IIT-IADA!5e0!3m2!1ses-419!2smx!4v1743615480025!5m2!1ses-419!2smx" width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</article>
+
+<br>
+
+<footer>
+<p>© 2025 Among Shhhop. Todos los derechos reservados.</p>
+</footer>
+
+
+<script>
+    let cart = [];
+    function addToCart(product) {
+        cart.push(product);
+        document.getElementById('cart-count').innerText = cart.length;
+        updateCartDropdown();
+    }
+    function updateCartDropdown() {
+        let cartList = document.getElementById('cart-items');
+        cartList.innerHTML = "";
+        cart.forEach(item => {
+            let listItem = document.createElement('li');
+            listItem.textContent = item;
+            cartList.appendChild(listItem);
+        });
+    }
+    document.getElementById('cart-menu').addEventListener('mouseenter', function() {
+        document.getElementById('cart-dropdown').style.display = 'block';
+    });
+    document.getElementById('cart-menu').addEventListener('mouseleave', function() {
+        document.getElementById('cart-dropdown').style.display = 'none';
+    });
+    document.getElementById('cart-menu').addEventListener('click', function() {
+        let dropdown = document.getElementById('cart-dropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+</script>
+
+</body>
+</html>
